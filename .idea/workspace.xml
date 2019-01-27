@@ -1,7 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="a0bbb7b8-25e7-41ab-9e9d-e8bafcd5c4cf" name="Default Changelist" comment="" />
+    <list default="true" id="a0bbb7b8-25e7-41ab-9e9d-e8bafcd5c4cf" name="Default Changelist" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/api/api.py" beforeDir="false" afterPath="$PROJECT_DIR$/api/api.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/api/models.py" beforeDir="false" afterPath="$PROJECT_DIR$/api/models.py" afterDir="false" />
+    </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -19,8 +23,8 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/api/api.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="100">
-              <caret line="4" column="14" selection-start-line="4" selection-start-column="14" selection-end-line="4" selection-end-column="14" />
+            <state relative-caret-position="175">
+              <caret line="7" column="152" selection-start-line="7" selection-start-column="152" selection-end-line="7" selection-end-column="152" />
             </state>
           </provider>
         </entry>
@@ -29,7 +33,7 @@
         <entry file="file://$PROJECT_DIR$/api/models.py">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="219">
-              <caret line="20" column="24" lean-forward="true" selection-start-line="20" selection-start-column="24" selection-end-line="20" selection-end-column="24" />
+              <caret line="37" column="26" lean-forward="true" selection-start-line="37" selection-start-column="26" selection-end-line="37" selection-end-column="26" />
             </state>
           </provider>
         </entry>
@@ -52,23 +56,26 @@
       </list>
     </option>
   </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+  </component>
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="$PROJECT_DIR$/api/api.py" />
         <option value="$PROJECT_DIR$/api/admin.py" />
         <option value="$PROJECT_DIR$/api/temp.py" />
-        <option value="$PROJECT_DIR$/api/models.py" />
         <option value="$PROJECT_DIR$/crypto/settings.py" />
+        <option value="$PROJECT_DIR$/api/api.py" />
+        <option value="$PROJECT_DIR$/api/models.py" />
       </list>
     </option>
   </component>
-  <component name="ProjectFrameBounds" extendedState="7">
-    <option name="x" value="10" />
-    <option name="y" value="20" />
-    <option name="width" value="1346" />
-    <option name="height" value="698" />
+  <component name="ProjectFrameBounds" extendedState="6">
+    <option name="x" value="676" />
+    <option name="width" value="697" />
+    <option name="height" value="745" />
   </component>
+  <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
   <component name="ProjectView">
     <navigator proportions="" version="1">
       <foldersAlwaysOnTop value="true" />
@@ -80,6 +87,11 @@
             <path>
               <item name="crypto" type="b2602c69:ProjectViewProjectNode" />
               <item name="crypto" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="crypto" type="b2602c69:ProjectViewProjectNode" />
+              <item name="crypto" type="462c0819:PsiDirectoryNode" />
+              <item name="api" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
               <item name="crypto" type="b2602c69:ProjectViewProjectNode" />
@@ -180,25 +192,25 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1548564631571</updated>
-      <workItem from="1548564636705" duration="7100000" />
+      <workItem from="1548564636705" duration="11495000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="7100000" />
+    <option name="totallyTimeSpent" value="11495000" />
   </component>
   <component name="ToolWindowManager">
-    <frame x="-8" y="-8" width="1382" height="754" extended-state="7" />
+    <frame x="-8" y="-8" width="1382" height="754" extended-state="6" />
     <editor active="true" />
     <layout>
       <window_info id="Favorites" side_tool="true" />
-      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.13388805" />
+      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.13388805" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info anchor="bottom" id="Docker" show_stripe_button="false" />
       <window_info anchor="bottom" id="Database Changes" />
       <window_info anchor="bottom" id="Version Control" />
       <window_info anchor="bottom" id="Python Console" weight="0.32850242" />
-      <window_info active="true" anchor="bottom" id="Terminal" visible="true" weight="0.32850242" />
+      <window_info anchor="bottom" id="Terminal" visible="true" weight="0.32850242" />
       <window_info anchor="bottom" id="Event Log" side_tool="true" />
       <window_info anchor="bottom" id="Message" order="0" />
       <window_info anchor="bottom" id="Find" order="1" weight="0.32850242" />
@@ -218,13 +230,6 @@
     <option name="version" value="1" />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/api/api.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="100">
-          <caret line="4" column="14" selection-start-line="4" selection-start-column="14" selection-end-line="4" selection-end-column="14" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/manage.py">
       <provider selected="true" editor-type-id="text-editor" />
     </entry>
@@ -258,10 +263,17 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/api/api.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="175">
+          <caret line="7" column="152" selection-start-line="7" selection-start-column="152" selection-end-line="7" selection-end-column="152" />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/api/models.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="219">
-          <caret line="20" column="24" lean-forward="true" selection-start-line="20" selection-start-column="24" selection-end-line="20" selection-end-column="24" />
+          <caret line="37" column="26" lean-forward="true" selection-start-line="37" selection-start-column="26" selection-end-line="37" selection-end-column="26" />
         </state>
       </provider>
     </entry>
