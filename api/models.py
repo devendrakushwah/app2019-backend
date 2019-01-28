@@ -21,18 +21,17 @@ class Exchange(models.Model):
         return self.name
 
 class Coin(models.Model):
-    id=models.IntegerField(max_length=10)
-    cmc_rank=models.IntegerField(max_length=10)
-    symbol = models.CharField(max_length=200, primary_key=True)
-    name = models.CharField(max_length=200)
-    price_usd = models.CharField(max_length=200)
-    total_supply = models.CharField(max_length=200)
-    max_supply = models.CharField(max_length=200)
-    circulating_supply = models.CharField(max_length=200)
-    change_hour = models.CharField(max_length=200)
-    change_day = models.CharField(max_length=200)
-    change_week = models.CharField(max_length=200)
-    last_update = models.CharField(max_length=200)
+    id=models.IntegerField(max_length=10,primary_key=True)
+    cmc_rank=models.IntegerField(max_length=10,null=True)
+    symbol = models.CharField(max_length=200,null=True)
+    name = models.CharField(max_length=200,null=True)
+    price_usd = models.CharField(max_length=200,null=True)
+    total_supply = models.CharField(max_length=200,null=True)
+    max_supply = models.CharField(max_length=200,null=True)
+    circulating_supply = models.CharField(max_length=200,null=True)
+    change_hour = models.CharField(max_length=200,null=True)
+    change_day = models.CharField(max_length=200,null=True)
+    change_week = models.CharField(max_length=200,null=True)
 
     def __str__(self):
         return str(self.id)+' '+str(self.name)

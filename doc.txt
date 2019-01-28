@@ -1,0 +1,43 @@
+#code to add coins in database
+
+for i in data['data']:
+    id=i['id']
+    cmc_rank=i['cmc_rank']
+    symbol=i['symbol']
+    name=i['name']
+    price_usd=i['quote']['USD']['price']
+    total_supply=i['total_supply']
+    max_supply=i['max_supply']
+    circulating_supply=i['circulating_supply']
+    change_hour=i['quote']['USD']['percent_change_1h']
+    change_day=i['quote']['USD']['percent_change_24h']
+    change_week=i['quote']['USD']['percent_change_7d']
+    instance=Coin(id=id,cmc_rank=cmc_rank,symbol=symbol,name=name,price_usd=price_usd,total_supply=total_supply,max_supply=max_supply,circulating_supply=circulating_supply,change_hour=change_hour,change_day=change_day,change_week=change_week)
+    instance.save()
+
+
+#------------------------------------------------------------------------------------------------------
+
+#code to save image urls
+
+with open('logos.json','r') as df:
+    data=json.load(df)    
+for i in data.keys():
+    name=data[i]['CoinName']
+    url='https://www.cryptocompare.com'+str(data[i]['Image'])
+    symbol=i
+    instance=Image(symbol=symbol,name=name,url=url)
+    instance.save()
+
+#------------------------------------------------------------------------------------------------------
+
+#API Currency exchange
+
+d=requests.get('http://apilayer.net/api/live?access_key=d39af46204819a2704ab3babadbd111f')
+data=d.text
+data=json.loads(data)
+for i in data['quotes'].keys():
+    name=i[3:]
+    value=data['quotes'][i]
+    instance=Exchange(name=name,value=value)
+    instance.save()
