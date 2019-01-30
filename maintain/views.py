@@ -9,7 +9,7 @@ from api.models import Coin,Exchange,News
 
 def maintain(request):
     html=loader.get_template('maintain/maintain.html')
-    return HttpResponse(html.render({},request))
+    return HttpResponse(html.render({'data':'','success':False},request))
 
 def update_coins(request):
     Coin.objects.all().delete()
@@ -31,7 +31,8 @@ def update_coins(request):
                         total_supply=total_supply, max_supply=max_supply, circulating_supply=circulating_supply,
                         change_hour=change_hour, change_day=change_day, change_week=change_week)
         instance.save()
-    return True
+    html = loader.get_template('maintain/maintain.html')
+    return HttpResponse(html.render({'data': 'Coins', 'success': True}, request))
 
 def update_exchange(request):
     Exchange.objects.all().delete()
@@ -42,7 +43,8 @@ def update_exchange(request):
         value = data['quotes'][i]
         instance = Exchange(name=name, value=value)
         instance.save()
-    return True
+    html = loader.get_template('maintain/maintain.html')
+    return HttpResponse(html.render({'data': 'Exchanges', 'success': True}, request))
 
 def update_news(request):
     News.objects.all().delete()
@@ -60,4 +62,6 @@ def update_news(request):
         source = i['source_info']['name']
         instance = News(title=title, image=image, url=url, date=date, source=source)
         instance.save()
-    return True
+        #print(j)
+    html = loader.get_template('maintain/maintain.html')
+    return HttpResponse(html.render({'data': 'News', 'success': True}, request))

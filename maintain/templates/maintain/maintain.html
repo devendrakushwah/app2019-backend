@@ -91,20 +91,29 @@ html {
       <li id="1" onclick="coin()">Coins</li>
       <li id="2" onclick="news()">News</li>
       <li id="3" onclick="exchange()">Exchange</li>
+        {% if success %}
+            <script>
+                alert('{{data}} Updated Successfully.')
+            </script>
+        {% endif %}
     </ul>
   </div>
 </div>
 
 </body>
 </html>
-
+{% if success %}
+    <script>
+        window.location.href="{% url 'maintain:maintain' %}"
+    </script>
+{% endif %}
 <script type="text/javascript">
 	function coin()
 	{
 		var a=confirm("Are you sure to update Coin data?")
 		if(a==true)
 		{
-			
+			window.location.href="{% url 'maintain:update_coins' %}"
 		}
 	}
 
@@ -113,7 +122,7 @@ html {
 		var b=confirm("Are you sure to update News data?")
 		if(b==true)
 		{
-			
+			window.location.href="{% url 'maintain:update_news' %}"
 		}
 	}
 
@@ -122,7 +131,8 @@ html {
 		var c=confirm("Are you sure to update Exchange data?")
 		if(c==true)
 		{
-			
+			window.location.href="{% url 'maintain:update_exchanges' %}"
+
 		}
 	}
 </script>
