@@ -1,9 +1,10 @@
 from django.http import HttpResponse
-from django.template import  loader
+from django.template import loader
 import json
 import requests
 from api.api_keys import *
 from api.models import Coin,Exchange,News
+from .utility import *
 
 # Create your views here.
 
@@ -58,8 +59,9 @@ def update_news(request):
         title = i['title']
         image = i['imageurl']
         url = i['url']
-        date = i['published_on']
         source = i['source_info']['name']
+        date = i['published_on']
+        date = timestamp_to_date(str(date))
         instance = News(title=title, image=image, url=url, date=date, source=source)
         instance.save()
         #print(j)
