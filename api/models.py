@@ -20,6 +20,7 @@ class Exchange(models.Model):
     def __str__(self):
         return self.name
 
+#Model to store all the Coins details
 class Coin(models.Model):
     id=models.IntegerField(max_length=10,primary_key=True)
     cmc_rank=models.IntegerField(max_length=10,null=True)
@@ -35,3 +36,14 @@ class Coin(models.Model):
 
     def __str__(self):
         return str(self.id)+' '+str(self.name)
+
+#Model to store users
+class News(models.Model):
+    title=models.CharField(max_length=100000)
+    image=models.URLField()
+    url=models.URLField()
+    date=models.CharField(max_length=200)
+    source=models.CharField(max_length=200)
+
+    def __str__(self):
+        return self.title

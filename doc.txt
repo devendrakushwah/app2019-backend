@@ -41,3 +41,17 @@ for i in data['quotes'].keys():
     value=data['quotes'][i]
     instance=Exchange(name=name,value=value)
     instance.save()
+
+#News
+j=0
+for i in data['Data']:
+    j+=1
+    if(j>20):
+        break
+    title=i['title']
+    image=i['imageurl']
+    url=i['url']
+    date=i['published_on']
+    source=i['source_info']['name']
+    instance=News(title=title,image=image,url=url,date=date,source=source)
+    instance.save()
