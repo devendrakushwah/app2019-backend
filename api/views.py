@@ -16,6 +16,6 @@ def get_top_coins(request):
         name=row.name
         price=str(float(str(row.price_usd))*float(str(price_convert)))
         change_day=row.change_day
-        rsp[id]={'cmc_rank':cmc_rank,'symbol':symbol,'name':name,'price':price,'change_day':change_day}
+        rsp[id]={'id':id,'cmc_rank':cmc_rank,'symbol':symbol,'name':name,'price':price,'change_day':change_day}
     rsp_json=(json.dumps(rsp,indent=4))
     return HttpResponse(rsp_json)
