@@ -1,5 +1,6 @@
-from django.urls import path
-from maintain.views import maintain
+from django.urls import re_path,path
+from api.views import *
 urlpatterns = [
-    path('/',maintain),
+    path('/',get_top_coins),
+    path('/get_top_coins/',get_top_coins),
 ]
