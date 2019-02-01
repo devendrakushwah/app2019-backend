@@ -56,3 +56,12 @@ def get_details(request):
 
     rsp_json = (json.dumps(rsp, indent=4))
     return HttpResponse(rsp_json)
+
+def search_coins(request):
+    rsp={}
+    string=request.GET.get('q','')
+    query_set=Coin.objects.filter(name__contains=string)
+    for row in query_set:
+        rsp[row.name]={'id':row.id,'symbol':row.symbol}
+    rsp_json = (json.dumps(rsp, indent=4))
+    return HttpResponse(rsp_json)

@@ -4,4 +4,5 @@ urlpatterns = [
     path('/',get_top_coins),
     path('/get_top_coins/',get_top_coins),
     path('/get_details/',get_details),
+    path('/search_coins/',search_coins),
 ]
