@@ -44,6 +44,7 @@ def update_exchange(request):
         value = data['quotes'][i]
         instance = Exchange(name=name, value=value)
         instance.save()
+
     html = loader.get_template('maintain/maintain.html')
     return HttpResponse(html.render({'data': 'Exchanges', 'success': True}, request))
 
