@@ -1,0 +1,11 @@
+1. To get list of top coins
+   crypto.com/api/get_top_coins?exchange=<EXCHANGE>
+
+2. To get details of a coin
+    crypto.com/api/get_details?id=<ID>&exchange=<EXCHANGE>
+
+3. To search for coins
+    crypto.com/api/search_coins?q=<COIN_NAME>
+
+4. To get the news
+    crypto.com/api/get_news
