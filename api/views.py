@@ -1,5 +1,4 @@
-from django.shortcuts import render
-from api.models import Coin,Exchange
+from api.models import Coin,Exchange,Image,News
 from django.http import HttpResponse
 import json
 # Create your views here.
@@ -9,6 +8,7 @@ def get_top_coins(request):
     exchange=request.GET.get('exchange','')
     price_convert=Exchange.objects.get(pk=exchange).value
     query_set=Coin.objects.order_by('cmc_rank')[:150]
+    image_set=Image.objects.all()
     rsp={}
     for row in query_set:
         id=row.id
@@ -17,7 +17,12 @@ def get_top_coins(request):
         name=row.name
         price=str(float(str(row.price_usd))*float(str(price_convert)))
         change_day=row.change_day
-        rsp[id]={'id':id,'cmc_rank':cmc_rank,'symbol':symbol,'name':name,'price':price,'change_day':change_day}
+        image_url=''
+        try:
+            image_url=image_set.get(symbol__exact=symbol).url
+        except:
+            image_url='None'
+        rsp[id]={'id':id,'cmc_rank':cmc_rank,'symbol':symbol,'name':name,'price':price,'change_day':change_day,'image_url':image_url}
     rsp_json=(json.dumps(rsp,indent=4))
     return HttpResponse(rsp_json)
 
@@ -26,7 +31,9 @@ def get_details(request):
     exchange=request.GET.get('exchange','')
     price_convert = Exchange.objects.get(pk=exchange).value
     query_set = Coin.objects.get(id=id)
+    image_set = Image.objects.all()
     rsp = {}
+    image_url = ''
     id=query_set.id
     cmc_rank=query_set.cmc_rank
     symbol=query_set.symbol
@@ -38,6 +45,11 @@ def get_details(request):
     change_hour=query_set.change_hour
     change_day=query_set.change_day
     change_week=query_set.change_week
+
+    try:
+        image_url = image_set.get(symbol__exact=symbol).url
+    except:
+        image_url = 'None'
 
     price=float(price_usd)*float(price_convert)
 
@@ -53,6 +65,7 @@ def get_details(request):
     rsp['change_hour']=change_hour
     rsp['change_day']=change_day
     rsp['change_week']=change_week
+    rsp['image_url']=image_url
 
     rsp_json = (json.dumps(rsp, indent=4))
     return HttpResponse(rsp_json)
@@ -63,5 +76,15 @@ def search_coins(request):
     query_set=Coin.objects.filter(name__contains=string)
     for row in query_set:
         rsp[row.name]={'id':row.id,'symbol':row.symbol}
+    rsp_json = (json.dumps(rsp, indent=4))
+    return HttpResponse(rsp_json)
+
+def get_news(request):
+    query_set=News.objects.all()
+    rsp={}
+    i=1
+    for row in query_set:
+        rsp[i]={'title':row.title,'image':row.image,'url':row.url,'date':row.date,'source':row.source}
+        i+=1
     rsp_json = (json.dumps(rsp, indent=4))
     return HttpResponse(rsp_json)
