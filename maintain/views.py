@@ -5,14 +5,16 @@ import requests
 from api.api_keys import *
 from api.models import Coin,Exchange,News
 from .utility import *
+import time
 
 # Create your views here.
 
 def maintain(request):
     html=loader.get_template('maintain/maintain.html')
-    return HttpResponse(html.render({'data':'','success':False},request))
+    return HttpResponse(html.render({'data':'','success':False,'time':''},request))
 
 def update_coins(request):
+    t1=time.time()
     Coin.objects.all().delete()
     rsp=requests.get('https://pro-api.coinmarketcap.com/v1/cryptocurrency/listings/latest?start=1&limit=5000&convert=USD&CMC_PRO_API_KEY='+cmc_api)
     data = json.loads(rsp.text)
@@ -33,9 +35,10 @@ def update_coins(request):
                         change_hour=change_hour, change_day=change_day, change_week=change_week)
         instance.save()
     html = loader.get_template('maintain/maintain.html')
-    return HttpResponse(html.render({'data': 'Coins', 'success': True}, request))
+    return HttpResponse(html.render({'data': 'Coins', 'success': True,'time':int(time.time()-t1)}, request))
 
 def update_exchange(request):
+    t1 = time.time()
     Exchange.objects.all().delete()
     rsp = requests.get('http://apilayer.net/api/live?access_key='+cl_api)
     data = json.loads(rsp.text)
@@ -46,9 +49,10 @@ def update_exchange(request):
         instance.save()
 
     html = loader.get_template('maintain/maintain.html')
-    return HttpResponse(html.render({'data': 'Exchanges', 'success': True}, request))
+    return HttpResponse(html.render({'data': 'Exchanges', 'success': True,'time':int(time.time()-t1)}, request))
 
 def update_news(request):
+    t1 = time.time()
     News.objects.all().delete()
     rsp = requests.get('https://min-api.cryptocompare.com/data/v2/news/?lang=EN&api_key='+ccmp_api)
     data = json.loads(rsp.text)
@@ -67,4 +71,4 @@ def update_news(request):
         instance.save()
         #print(j)
     html = loader.get_template('maintain/maintain.html')
-    return HttpResponse(html.render({'data': 'News', 'success': True}, request))
+    return HttpResponse(html.render({'data': 'News', 'success': True,'time':int(time.time()-t1)}, request))
