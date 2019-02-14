@@ -10,6 +10,7 @@ def get_top_coins(request):
     query_set=Coin.objects.order_by('cmc_rank')[:150]
     image_set=Image.objects.all()
     rsp={}
+    data=[]
     for row in query_set:
         id=row.id
         cmc_rank=row.cmc_rank
@@ -22,7 +23,8 @@ def get_top_coins(request):
             image_url=image_set.get(symbol__exact=symbol).url
         except:
             image_url='None'
-        rsp[id]={'id':id,'cmc_rank':cmc_rank,'symbol':symbol,'name':name,'price':price,'change_day':change_day,'image_url':image_url}
+        data.append({'id':id,'cmc_rank':cmc_rank,'symbol':symbol,'name':name,'price':price,'change_day':change_day,'image_url':image_url})
+    rsp['data']=data
     rsp_json=(json.dumps(rsp,indent=4))
     return HttpResponse(rsp_json)
 
@@ -74,17 +76,21 @@ def search_coins(request):
     rsp={}
     string=request.GET.get('q','')
     query_set=Coin.objects.filter(name__contains=string)
+    data=[]
     for row in query_set:
-        rsp[row.name]={'id':row.id,'symbol':row.symbol}
+        data.append({'id':row.id,'name':row.name,'symbol':row.symbol})
+    rsp['data']=data
     rsp_json = (json.dumps(rsp, indent=4))
     return HttpResponse(rsp_json)
 
 def get_news(request):
     query_set=News.objects.all()
     rsp={}
+    data=[]
     i=1
     for row in query_set:
-        rsp[i]={'title':row.title,'image':row.image,'url':row.url,'date':row.date,'source':row.source}
+        data.append({'title':row.title,'image':row.image,'url':row.url,'date':row.date,'source':row.source})
         i+=1
+    rsp['data']=data
     rsp_json = (json.dumps(rsp, indent=4))
     return HttpResponse(rsp_json)
