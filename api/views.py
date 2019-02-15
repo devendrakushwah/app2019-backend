@@ -94,3 +94,13 @@ def get_news(request):
     rsp['data']=data
     rsp_json = (json.dumps(rsp, indent=4))
     return HttpResponse(rsp_json)
+
+def get_currency_list(request):
+    query_set=Exchange.objects.all()
+    rsp={}
+    data=[]
+    for row in query_set:
+        data.append({'name':row.name})
+    rsp['data']=data
+    rsp_json = (json.dumps(rsp, indent=4))
+    return HttpResponse(rsp_json)
